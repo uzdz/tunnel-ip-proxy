@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_package = "org.jeecg.modules.vps.proto";
+option java_outer_classname="RePojo";
+option go_package = "pkg/config/po";
+
+message FRq {
+
+  // 当前机器号
+  string deviceId = 1;
+
+  // 当先exe版本号
+  string version = 2;
+
+  // 客户端类型
+  string model = 3;
+}
+
+message FRp {
+
+	// 服务器是否处理成功
+    int64 code = 1;
+
+    // 是否需要下载
+    bool need = 2;
+
+    // 下载地址
+    string filePath = 3;
+}

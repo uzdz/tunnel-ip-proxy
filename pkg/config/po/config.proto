@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "org.jeecg.modules.vps.proto";
+option java_outer_classname="ConfigPojo";
+option go_package = "pkg/config/po";
+
+message Config {
+
+    // 用户访问限制（KEY：uid，VALUE：number:second）
+    // 如果获取到授权用户，但是未获取到用户的访问限制，表示无限制
+    map<string, string> userConnectLimit = 1;
+
+    // 授权用户列表（IP反转MAP）（KEY：ip，VALUE：uid）
+    map<string, string> authListWithIpMap = 2;
+
+    // 授权用户列表（用户名反转MAP）（KEY：user:password，VALUE：uid）
+    map<string, string> authListWithUNameMap = 3;
+}

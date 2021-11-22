@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+import "pkg/config/po/config.proto";
+option java_package = "org.jeecg.modules.vps.proto";
+option java_outer_classname="RePojo";
+option go_package = "pkg/config/po";
+
+message Rq {
+
+    // 当前机器号
+    string deviceId = 1;
+
+    // 当前公网IP
+    string ip = 2;
+
+    // 当前代理端口号
+    int64 port = 3;
+
+    // 拨号时间戳
+    int64 dialTime = 4;
+}
+
+message Rp {
+
+    // -------------- 标准参数
+    // 服务器是否处理成功
+    int64 code = 1;
+
+    // 是否需要验证 0需要 1不需要
+    int64 noAuth = 2;
+
+    // 授权/限流等配置
+    Config configData = 3;
+
+    // -------------- 标准代理参数
+    // IP切换时间间隔（秒）
+    int64 ipInterval = 4;
+
+    // 当日IP是否允许重复 0允许 1不允许
+    int64 ipRepeat = 5;
+}
